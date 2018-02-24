@@ -1,0 +1,18 @@
+<a href="/songs/show">Dashboard</a>
+<a href="/users/logout">Logout</a>
+
+<h3><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h3>
+<table>
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Times Added</th>
+    </tr>
+    <% @songs.each do |song| %>
+    <tr>
+    <td><%= song.artist %></td>
+    <td><%= song.title %></td>
+    <td><%= song.plays.where(user_id: @user.id).count %></td>
+    <% end %>
+    </tr>
+    </table>
